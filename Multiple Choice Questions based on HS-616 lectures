@@ -13,9 +13,11 @@ Which symbol is used as the assignment operator in R
 * `<--`
 * `==`
 * `->`
+
+--- 
 ## Lecture 1b
 
-In the following code, would decreasing the value of N from 10000 to 100 change the shape of the plot significantly (keeping pch constant ) or changing the pch value from 16 to 6 (keeping N at 10000)
+In the following code, would decreasing the value of N from 10000 to 100 change the shape of the plot significantly (keeping pch constant ) or changing the pch value from 16 to 6 (keeping N at 10000) from the original plot
 
 ```
 N <- 10000
@@ -26,5 +28,5 @@ plot(x, y, pch=16, col=ifelse(x^2 + y^2<1, "red", "blue"))
 
 * neither will effect shape of the plot
 * both will significantly change the shape of plot
-* decresing N will change the shape of the plot
+* decreasing N will change the shape of the plot
 * decreasing pch will change the shape of the plot
