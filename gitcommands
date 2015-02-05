@@ -1,0 +1,7 @@
+git clone git://github.com/vchaudhuri/hs-616
+
+git add <filename>
+
+git commit -m "<comment" 
+
+git push origin hs-616

@@ -1,0 +1,77 @@
+---
+title: "Body Mass Index"
+author: "Vaishali Chaudhuri"
+date: "February 3, 2015"
+output: pdf_document
+---
+
+Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women.
+
+
+```{r latex_functions, echo=FALSE}
+print_as_latex <- function(r_equation){
+    r_equation <- gsub("\\*", "", r_equation)
+    cat(paste("$$",r_equation,"$$"))
+}
+```
+
+
+$$
+BMI = \frac{\text{mass}_\text{kg}}{\text{height}_\text{m}^2}
+= \frac{\text{mass}_\text{lb}}{\text{height}_\text{in}^2}\times 703
+$$
+
+
+The BMI for a person is defined as their body mass divided by the square of their height—with the value universally being given in 
+[[Units of measurement|units]] of kg/m<sup>2</sup>.  
+
+#
+The index was devised by Adolphe Quetelet during the course of developing what he called "social physics", between 1830 and 1850. 
+#
+
+The BMI of an individual may also be determined using a table.
+<ref group=note>e.g. the [http://www.nhlbi.nih.gov/guidelines/obesity/bmi_tbl.htm Body Mass Index Table] from the [[National Institutes of Health]]'s [[National Heart, Lung, and Blood Institute|NHLBI]].</ref> 
+
+Category|BMI_range- kg/m^2|BMI Prime
+--------|----------------|---------
+Ver severely underweight|less than 15|less than 0.6
+Severely underweight|from 15.0 to 16.0|from 0.6 to 0.64
+Underweight|from 16.0 to 18.5|from0.64 to 0.74
+Normal(healthy weight)|from 18.5 to 25|from 0.74 to 1.0|
+Overweight|from 25 to 30|from 1.0 to 1.2
+Obese ClassI (Moderately Obese)|from 30 to 35|from 1.2 to 1.4
+Obese ClassII(Severly Obese)|from 35 to 40|from 1.4 to 1.6
+Obese ClassIII (Very severely Obese)|from 35 to 40|over1.6
+
+BMI Prime, a simple modification of the BMI system, is the ratio of actual BMI to upper limit BMI (currently defined at BMI 25). As defined, BMI Prime is also the ratio of body weight to upper body-weight limit, calculated at BMI 25. Since it is the ratio of two separate BMI values, BMI Prime is a dimensionless number without associated units. Individuals with BMI Prime less than 0.74 are underweight; those with between 0.74 and 1.00 have optimal weight; and those at 1.00 or greater are overweight. BMI Prime is useful clinically because individuals can tell, at a glance, by what percentage they deviate from their upper weight limits. For instance, a person with BMI 34 has a BMI Prime of 34/25 = 1.36, and is 36% over his or her upper mass limit. In South East Asian and South Chinese populations (see international variation section below), BMI Prime should be calculated using an upper limit BMI of 23 in the denominator instead of 25. Nonetheless, BMI Prime allows easy comparison between populations whose upper-limit BMI values differ
+
+
+There are a wide variety of contexts where the BMI of an individual can be used as a simple method to assess how much the recorded body weight departs from what is healthy or desirable for a person of that height. There is, however, some debate about which values on the BMI scale the thresholds for '[[underweight]]', '[[overweight]]' and '[[obesity|obese]]' should be set.
+
+#Categories
+
+A frequent use of the BMI is to assess how much an individual's body weight departs from what is normal or desirable for a person of his or her height. The weight excess or deficiency may, in part, be accounted for by body fat ([[adipose tissue]]) although other factors such as muscularity also affect BMI significantly. The [[World Health Organization|WHO]] regards a BMI of less than 18.5 as underweight and may indicate [[malnutrition]], an [[eating disorder]], or other health problems, while a BMI greater than 25 is considered overweight and above 30 is considered [[obesity|obese]].<ref name="BMI Classification" /> These ranges of BMI values are valid only as statistical categories
+
+# Calculations
+
+BMI provides a simple numeric measure of a person's ''thickness'' or ''thinness'', allowing health professionals to discuss weight problems more objectively with their patients. BMI was designed to be used as a simple means of classifying average sedentary (physically inactive)  populations, with an average body composition.<ref>{{cite journal|journal = WHO Technical Report Series| volume = 854 | title = Physical Status: The Use and Interpretation of Anthropometry |page = 9 |url = http://whqlibdoc.who.int/trs/WHO_TRS_854.pdf |location=Geneva, Switzerland |year=1995 |publisher=World Health Organization |pmid=8594834}}</ref> For these individuals, the current value recommendations are as follow: a BMI from 18.5 up to 25 may indicate optimal weight, a BMI lower than 18.5 suggests the person is [[underweight]], a number from 25 up to 30 may indicate the person is [[overweight]], and a number from 30 upwards suggests the person is [[obesity|obese]].<ref name=nhlbi /><ref name=nhsob /> Athletes, who tend to have an atypical muscle/fat ratio (atypical [[body fat percentage]]), may have a BMI that is misleading at first sight.<ref name=nhsob />
+
+source :wikipedia [https://en.wikipedia.org/wiki/Body_mass_index]
+
+#Example
+
+```{r BMI, echo=FALSE}
+weight_lbs<-c(123,136,145,149,190,182)
+height_inches<-c(62.4,62.4,70,73,79,75)
+Body_Mass_Index<-(weight_lbs/(height_inches^2) )* 703
+BMI_frame<-data.frame(weight_lbs,height_inches,Body_Mass_Index)
+BMI_frame
+```
+
+```{r, echo=FALSE}
+plot(weight_lbs,Body_Mass_Index)
+```
+
+#Conclusion
+
+So we see height has a direct correlation on BMI. For e.g a person who has a weight of 123 pounds with a height of 62.4 inches has a higher BMI than a person who weighs 149 pounds and has a height of 73 inches. However this is just an objective calculation, However, BMI categories do not take into account many factors such as frame size and muscularity.The categories also fail to account for varying proportions of fat, bone, cartilage, water weight, and more.
