@@ -5,75 +5,89 @@ output: html_document
 ---
 
 ## Lecture 1a
+  
+What is the type of variable 'd' below 
 
-Which symbol is used as the assignment operator in R
+```
+f <- sqrt
+x <- 1:20
+y <- f(x)
+z <- x^2
+d <- data.frame(x, y, z)
 
-* `<-`
-* `<--`
-* `==`
-* `->`
+```
+* list
+* matrix
+* integer
+* character
 
---- 
+
+
 ## Lecture 1b
 
-In the following code, would decreasing the value of N from 10000 to 100 change the shape of the plot significantly (keeping pch constant ) or changing the pch value from 16 to 6 (keeping N at 10000) from the original plot
+Consider the following code:
+```
+N <-10000
+x <- runif(N)
+y <- runif(N)
+vlength<-sqrt<-(x^2 +y^2)
+in_circle<-vlength < 1
 
 ```
-N <- 10000
-x <- runif(N, min=-1.0, max=1.0)
-y <- runif(N, min=-1.0, max=1.0)
-plot(x, y, pch=16, col=ifelse(x^2 + y^2< 1, "red", "blue"))
+
+what appears to be  the correct output of the command
+
 ```
+head(as.integer(in_circle))
+```
+* 1 1 1 1 1 0
+* TRUE TRUE TRUE TRUE TRUE FALSE 
+* 1 -1 1 0 -1 0
+* 0.23, ,0.34, 0.12, 0.45, 0.55, 0.79
 
 
- *  Decreasing N will change the shape of the plot
 
- *  Both will significantly change the shape of plot
-
- *  Neither will change the shape of the plot
-
- *  Decreasing pch will change the shape of the plot
-
-----
 ## Lecture 2a
 
-In a screening test would decreasing the sensitivity by 2% ( if we take original sensitivity at 98% then  new sensitivity is 96%) and increasing specificity by 2% i,e original specificity is 95% and new specificty is 97% have an impact on predicting a true positive . Prevalence remains same at 0.001 in both conditions. Use the code below
+What does the Central Limit Theorem state ?
 
-```
-post_probability <- function(sensitivity, specificity, prevalence)
-sensitivity*prevalence/(sensitivity*prevalence + (1-specificity)*(1-prevalence))
+* The distribution of the means of a set of random samples is approximately    Normal
+* The area under the normal denisty curve is one
+* Measures of central tendency should always be computed with and without        outliers
+* Confidence intervals have zero margin of error for large sample sizes.
 
-```
-* The probability of predicting a true positive will increase
-* The probability of predicting a true positive will decrease
-* The probability will remain unchanged
-* Cannot decipher any inference from the given parameters
+
 
 ## Lecture 2b
 
-Which of the following distribution is a  discrete probability mass function
+ Probability mass function is same as probability density function. what type of functions are they
 
-*  Bernoulli distribution, which takes value 1 with probability p and value 0 with probability q = 1 − p.
-*The Logitnormal distribution on (0,1).
-*The rectangular distribution is a uniform distribution on [−1/2,1/2].
-* The Beta distribution on [0,1], a family of two-parameter distributions with one mode, of which the uniform distribution is a special case, and which is useful in estimating success probabilities.
+* False, the probability mass function is a discrete distribution and the probability density function is a continuous distribution
+* True, they both are continuous distribution
+* True, they both are discrete distribution
+* False, the probability mass function is a continuous distribution and the probability density function is a discrete distribution
 
 ## Lecture 3a
 
-If A <- matrix(c(3, 4, 5, 7, 9, 5), nrow=2)
-B <- t(A). which choice is correct in the order of stating the dimensions of the following matrices
+In the following code
 ```
-dim(A)
-dim(B)
-A%*% B
-B%*%A
+A <- matrix(1:4, nrow=1)
 ```
+what is the result and type of
+
 ```
-* 2*3,3*2,2*2,3*3
-* 3*2,2*3,3*3,2*2
-* 2*2,3*3,2*3,3*2
-* 3*3,2*2,3*2,2*3
+A%*%t(A)
+
 ```
+
+* 5 and integer
+*     [,1] [,2]  and list
+[1,]    1    2
+[2,]    2    4
+  
+* A^2 and double
+* A(inv) and integer
+
 
 ## Lecture 3b
 Consider the eigen equation
@@ -83,4 +97,85 @@ If A is the identity matrix. what is lambda?
 * lambda is infinity
 * lambda is zero value
 * lamda  doesn't exist for an identity matrix
+
+## Lecture 4a
+
+Consider the following code:
+```
+a <- function(x) x = 1/{
+    1 + x
+}
+f <- function(x) x = 1/(1 + x)
+g <- function(x) x = (1/(1 + x))
+h <- function(x) x = ((1/(1 + x)))
+
+x <- sample(1:100, 100, replace = TRUE)
+comp <- microbenchmark(a(x), f(x), g(x), h(x), times = 1e+05)
+comp
+```
+All the above perform the same function but have different levels of bracket or curly braces. would it affect the performance cost and which will be the fastest ? 
+(Hint: R treats curly brackets as a “special” operator, whose arguments are not automatically evaluated, but it treats parentheses as a “built in” operator whose arguments (just one for parentheses) are evaluated automatically, with the results of this evaluation stored in a  list)
+
+* a will be the fastest because it has curly braces
+* f will be fastest because it has paranthesis
+* all the operations have the same time because it is the same function and braces or parnatheses does not matter
+* h will be fastest because you are simmplifying the function by adding layers of parantheses
+
+## Lecture 4b
+
+Consider the following code:
+
+```
+mean1 <- function(x) mean(x)
+mean2 <- function(x) sum(x) / length(x)
+x <- runif(100)
+stopifnot(all.equal(mean1(x), mean2(x)))
+microbenchmark(
+  mean1(x),
+  mean2(x)
+)
+
+```
+his is because, among other reasons, mean(x) makes two passes over the vector to be more numerically accurate
+In this code do mean 1 and mean 2 have equal run time or differ?
+
+* mean 1 is considerably slower  because  mean1 makes two passes over the vector to be more numerically accurate
+* mean 2 is considerably faster because just one inbuilt fnction is executed
+* mean 1 and mean2  have equal run time because they perform the same operation
+* it cannot be determined from the above data
+
+
+## Lecture 5a
+
+Of the following which is not a valid way to read R data in a technically correct format
+```
+a<-read.xml
+```
+```
+b<-read.csv
+```
+```
+c<-read.table
+```
+```
+d<-read.dataframe
+```
+
+* a & d
+* a & b
+* c & d
+* a & d
+
+## Lecture 5b
+
+In the following code what do the three dots represent?
+```
+maxMinusMin <- function(v, ...) max(v, ...) - min(v, ...)
+apply(A, 1, maxMinusMin, na.rm=TRUE)
+
+`````
+* Any additional parameter passed to the function
+* Function is not valid and cannot be executed
+* It's an incomplete function that will need more parameters
+* Typing error
 
