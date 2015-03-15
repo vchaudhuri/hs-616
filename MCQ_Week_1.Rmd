@@ -1,12 +1,13 @@
 ---
 title: "Multiple Choice Questions"
-author: "Vaishali Chaudhuri"
+author: "Vaishali Chaudhuri
+date: "March,14 2015"
 output: html_document
 ---
 
 ## Lecture 1a
   
-What is the type of variable 'd' below 
+What is the typeof variable 'd' ?
 ```
 f <- sqrt
 x <- 1:20
@@ -16,7 +17,7 @@ d <- data.frame(x, y, z)
 ```
 
 * list
-* matrix
+* dataframe
 * integer
 * character
 
