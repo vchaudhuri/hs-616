@@ -14,8 +14,9 @@ x <- 1:20
 y <- f(x)
 z <- x^2
 d <- data.frame(x, y, z)
-
 ```
+
+
 * list
 * matrix
 * integer
@@ -24,21 +25,16 @@ d <- data.frame(x, y, z)
 
 ## Lecture 1b
 
-Consider the following code:
+Consider the following code:What appears to be  the correct output of the [head(as.integer(in_circle))] ?
+
 ```
 N <-10000
 x <- runif(N)
 y <- runif(N)
 vlength<-sqrt<-(x^2 +y^2)
 in_circle<-vlength < 1
-
 ```
 
-What appears to be  the correct output of the command ?
-
-```
-head(as.integer(in_circle))
-```
 * 1 1 1 1 1 0
 * TRUE TRUE TRUE TRUE TRUE FALSE 
 * 1 -1 1 0 -1 0
@@ -57,7 +53,7 @@ What does the Central Limit Theorem state ?
 
 ## Lecture 2b
 
- Probability mass function is same as probability density function. what type of functions are they
+Probability mass function is same as probability density function. what type of functions are they?
 
 * False, the probability mass function is a discrete distribution and the probability density function is a continuous distribution
 * True, they both are continuous distribution
@@ -67,14 +63,9 @@ What does the Central Limit Theorem state ?
 
 ## Lecture 3a
 
-In the following code
+In the following code . What is the result and typeof  [A%*%t(A)]
 ```
 A <- matrix(1:4, nrow=1)
-```
-What is the result and typeof
-
-```
-A%*%t(A)
 ```
 
 * 5 and integer
@@ -95,7 +86,9 @@ If A is the identity matrix. what is lambda?
 
 ## Lecture 4a
 
-Consider the following code:
+Consider the following code:All the below lines of code perform the same function but have different levels of bracket or curly braces. would it affect the performance cost and which will be the fastest ? 
+(Hint: R treats curly brackets as a “special” operator, whose arguments are not automatically evaluated, but it treats parentheses as a “built in” operator whose arguments (just one for parentheses) are evaluated automatically, with the results of this evaluation stored in a  list)
+
 ```
 a <- function(x) x = 1/{
     1 + x
@@ -108,18 +101,16 @@ x <- sample(1:100, 100, replace = TRUE)
 comp <- microbenchmark(a(x), f(x), g(x), h(x), times = 1e+05)
 comp
 ```
-All the above perform the same function but have different levels of bracket or curly braces. would it affect the performance cost and which will be the fastest ? 
-(Hint: R treats curly brackets as a “special” operator, whose arguments are not automatically evaluated, but it treats parentheses as a “built in” operator whose arguments (just one for parentheses) are evaluated automatically, with the results of this evaluation stored in a  list)
 
 * 'a' will be the fastest because it has curly braces
 * 'f' will be fastest because it has paranthesis
 * all the operations have the same time because it is the same function and braces or parnatheses does not matter
-* 'h' will be fastest because you are simmplifying the function by adding layers of parantheses
+* 'h' will be fastest because you are simplifying the function by adding layers of parantheses
 
 
 ## Lecture 4b
 
-Consider the following code:
+Consider the following code  does mean1 and mean2 have equal run times or differ in run times? 
 
 ```
 mean1 <- function(x) mean(x)
@@ -132,8 +123,6 @@ microbenchmark(
 )
 ```
 
-In this code does mean1 and mean2 have equal run times or differ in run times? 
-
 * mean1 is considerably slower  because  mean1 makes two passes over the vector to be more numerically accurate
 * mean2 is considerably faster because just one inbuilt fnction is executed
 * mean1 and mean2  have equal run time because they perform the same operation
@@ -145,14 +134,8 @@ In this code does mean1 and mean2 have equal run times or differ in run times?
 Of the following which is not a valid way to read R data in a technically correct format
 ```
 a<-read.xml
-```
-```
 b<-read.csv
-```
-```
 c<-read.table
-```
-```
 d<-read.dataframe
 ```
 
@@ -168,8 +151,8 @@ In the following code what do the three dots represent?
 ```
 maxMinusMin <- function(v, ...) max(v, ...) - min(v, ...)
 apply(A, 1, maxMinusMin, na.rm=TRUE)
+```
 
-`````
 * Any additional parameter can be passed to the function but function is valid
 * Function is invalid and cannot be executed
 * It's an invalid function that will need more parameters
@@ -203,6 +186,8 @@ A<-flights[flights$Month==1 & flightsDayofMonth==1,]
 B<-filter(flights, Month==1, DayofMonth==1)
 C<-flights %>% select(Month==1) %>% select(DayofMOnth==1)
 ```
+
+
 * B & C
 * B
 * C
@@ -226,7 +211,6 @@ T_shirts <- data.frame(
   sex=sample(c("M","F"), 100, replace=T), 
 	size=sample(c("L", "M", "S"), 100, replace=T)
 )
-
 table(T_shirts)
 xtabs(~ sex + size, T_shirts)
 ```
