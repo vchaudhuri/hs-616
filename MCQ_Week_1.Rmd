@@ -16,6 +16,7 @@ d <- data.frame(x, y, z)
 ```
 What is the typeof variable d ?
 
+
 * list
 * dataframe
 * integer
