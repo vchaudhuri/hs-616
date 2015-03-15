@@ -5,8 +5,7 @@ date: "March 14 2015"
 output: html_document
 ---
 
-## Lecture 1a
-  
+## Lecture 1a 
 What is the typeof variable d ?
 ```
 f <- sqrt
@@ -15,6 +14,7 @@ y <- f(x)
 z <- x^2
 d <- data.frame(x, y, z)
 ```
+
 
 * list
 * dataframe
