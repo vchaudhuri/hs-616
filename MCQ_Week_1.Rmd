@@ -22,7 +22,6 @@ d <- data.frame(x, y, z)
 * character
 
 
-
 ## Lecture 1b
 
 Consider the following code:
@@ -35,7 +34,7 @@ in_circle<-vlength < 1
 
 ```
 
-what appears to be  the correct output of the command
+What appears to be  the correct output of the command ?
 
 ```
 head(as.integer(in_circle))
@@ -46,16 +45,14 @@ head(as.integer(in_circle))
 * 0.23, ,0.34, 0.12, 0.45, 0.55, 0.79
 
 
-
 ## Lecture 2a
 
 What does the Central Limit Theorem state ?
 
-* The distribution of the means of a set of random samples is approximately    Normal
+* The distribution of the means of a set of random samples is approximately Normal
 * The area under the normal denisty curve is one
-* Measures of central tendency should always be computed with and without        outliers
+* Measures of central tendency should always be computed with and without outliers
 * Confidence intervals have zero margin of error for large sample sizes.
-
 
 
 ## Lecture 2b
@@ -67,29 +64,27 @@ What does the Central Limit Theorem state ?
 * True, they both are discrete distribution
 * False, the probability mass function is a continuous distribution and the probability density function is a discrete distribution
 
+
 ## Lecture 3a
 
 In the following code
 ```
 A <- matrix(1:4, nrow=1)
 ```
-what is the result and type of
+What is the result and typeof
 
 ```
 A%*%t(A)
-
 ```
 
 * 5 and integer
-*     [,1] [,2]  and list
-[1,]    1    2
-[2,]    2    4
-  
+* (2X2) matrix and list
 * A^2 and double
 * A(inv) and integer
 
 
 ## Lecture 3b
+
 Consider the eigen equation
 If A is the identity matrix. what is lambda?
 
@@ -116,10 +111,11 @@ comp
 All the above perform the same function but have different levels of bracket or curly braces. would it affect the performance cost and which will be the fastest ? 
 (Hint: R treats curly brackets as a “special” operator, whose arguments are not automatically evaluated, but it treats parentheses as a “built in” operator whose arguments (just one for parentheses) are evaluated automatically, with the results of this evaluation stored in a  list)
 
-* a will be the fastest because it has curly braces
-* f will be fastest because it has paranthesis
+* 'a' will be the fastest because it has curly braces
+* 'f' will be fastest because it has paranthesis
 * all the operations have the same time because it is the same function and braces or parnatheses does not matter
-* h will be fastest because you are simmplifying the function by adding layers of parantheses
+* 'h' will be fastest because you are simmplifying the function by adding layers of parantheses
+
 
 ## Lecture 4b
 
@@ -134,14 +130,13 @@ microbenchmark(
   mean1(x),
   mean2(x)
 )
-
 ```
-his is because, among other reasons, mean(x) makes two passes over the vector to be more numerically accurate
-In this code do mean 1 and mean 2 have equal run time or differ?
 
-* mean 1 is considerably slower  because  mean1 makes two passes over the vector to be more numerically accurate
-* mean 2 is considerably faster because just one inbuilt fnction is executed
-* mean 1 and mean2  have equal run time because they perform the same operation
+In this code does mean1 and mean2 have equal run times or differ in run times? 
+
+* mean1 is considerably slower  because  mean1 makes two passes over the vector to be more numerically accurate
+* mean2 is considerably faster because just one inbuilt fnction is executed
+* mean1 and mean2  have equal run time because they perform the same operation
 * it cannot be determined from the above data
 
 
@@ -164,7 +159,8 @@ d<-read.dataframe
 * a & d
 * a & b
 * c & d
-* a & d
+* All are correct formats to read R data
+
 
 ## Lecture 5b
 
@@ -174,8 +170,74 @@ maxMinusMin <- function(v, ...) max(v, ...) - min(v, ...)
 apply(A, 1, maxMinusMin, na.rm=TRUE)
 
 `````
-* Any additional parameter passed to the function
-* Function is not valid and cannot be executed
-* It's an incomplete function that will need more parameters
+* Any additional parameter can be passed to the function but function is valid
+* Function is invalid and cannot be executed
+* It's an invalid function that will need more parameters
 * Typing error
+
+## Lecture 6a
+
+In the following structure of data frame , what is one of the ways to query for the 
+date
+```
+str(result)
+'data.frame':   316125 obs. of  6 variables:
+ $ ID    : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ dt    : Date, format: "1999-12-31" "1999-12-31" "1999-12-31" "1999-12-31" ...
+ $ Ticker: chr  "0111145D US" "0113357D US" "0202445Q US" "0203524D US" ...
+ $ px    : num  32.5 20.6 34.2 21.4 11 ...
+ $ High  : num  34.9 23.5 35.4 25.9 11 ...
+ $ Low   : num  31.19 18 28.85 20.28 9.97 ...
+```
+
+* create new character version of the dt variable (chardt) and query in sqldf on the character version of dt sqldf("SELECT * FROM result WHERE chardt='1999-12-31'")
+* query the table by using the command ("SELECT * FROM result WHERE dt=",as.Date("1999-12-31"),"", sep=""))
+* query the table by using the command ("SELECT * FROM result WHERE dt="1999-12-31")
+* Date is in an integer format  and cannot be searched
+
+## Lecture 6b
+
+which is/are the dplyr (may also use magrittr package) approach to search for a data point from a dataframe called 'flight' by 1st month and 1st DayofMonth
+```
+A<-flights[flights$Month==1 & flightsDayofMonth==1,]
+B<-filter(flights, Month==1, DayofMonth==1)
+C<-flights %>% select(Month==1) %>% select(DayofMOnth==1)
+```
+* B & C
+* B
+* C
+* A
+
+## Lecture 7a
+
+The two most important properties of Tidyr package is :Each column is a variable and each row is an observation. Hence which statement is true
+
+* It is easy to  describe functional relationships between columns than between rows
+* It is easy to  describe functional relationships between rows than between columns
+* Row and columns both are attributes of a dataframe , so each datapoint has a relationship with another datapoint across the dataframe
+* All data points in a row are independent observations , hence there is no relationships even across a row in a dataframe
+
+## Lecture 7b
+
+In the following code what does the function xtab do ?
+
+```
+T_shirts <- data.frame(
+  sex=sample(c("M","F"), 100, replace=T), 
+	size=sample(c("L", "M", "S"), 100, replace=T)
+)
+
+table(T_shirts)
+xtabs(~ sex + size, T_shirts)
+```
+
+* Crosstabulates variables with small numbers of unique values
+* Introduces equally spaces tabs between columns in the output file
+* Eliminates duplicate data in a table and merges data
+* Breaks one data  frame into separate dataframes depending on the arguments that are passed to to xtab
+
+
+
+
+
 

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!--[if gte IE 9 ]><html class="ie ie9 scripts-not-loaded" lang="en"> <![endif]-->
+<!--[if !(IE)]><!--> <html class="not-ie scripts-not-loaded" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>  class_data.txt: Statistical Computing for Biomedical Data Analytics (Spring 2015)
+</title>
+  <!--[if lte IE 8]> <meta http-equiv=refresh content="0; URL=/ie-8-is-not-supported.html" /> <![endif]-->
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"
+  />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+  
+  <link href="/assets/vendor_legacy_normal_contrast.css?1426281949" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/common_legacy_normal_contrast.css?1426281949" media="all" rel="stylesheet" type="text/css" />
+  
+  <meta content="app-id=480883488" name="apple-itunes-app" />
+<meta content="app-id=com.instructure.candroid" name="google-play-app" />
+  
+  
+  <link href="https://canvas.usfca.edu/overrides.css" media="all" rel="stylesheet" type="text/css" />
+  <script>
+    // listen for any clicks on links that have href="#" and queue them to be fired on dom ready.
+      function _earlyClick(e){
+        var cur = e.target || e.srcElement;
+        while ( cur && cur.ownerDocument ) {
+          if ( cur.getAttribute('href') == '#' ) {
+            e.preventDefault();
+            _earlyClick.clicks = _earlyClick.clicks || [];
+            _earlyClick.clicks.push(cur);
+            break;
+          }
+          cur = cur.parentNode;
+        }
+      }
+      document.addEventListener('click', _earlyClick);
+  </script>
+</head>
+
+
+<body class="with-left-side files context-course_1483575">
+
+<ul role="alert" aria-live="assertive" id="flash_message_holder"></ul>
+<div role="alert" aria-live="assertive" id="flash_screenreader_holder" class="screenreader-only"></div>
+
+
+<div id="application">
+  <noscript><div role="alert" class="ic-flash-static ic-flash-error"><h1>You need to have JavaScript enabled in order to access this site.</h1></div></noscript>
+
+
+  <div id="header" class="no-print ">
+    <div id="header-inner">
+      <a href="#content" id="skip_navigation_link">Skip To Content</a>
+      <a id="header-logo" href="https://usfca.instructure.com/">My Dashboard</a>
+      <b id="header-logo-secondary"></b>
+      <div id="topbar" role="navigation" aria-label="User Menu">
+    <ul id="identity">
+      <li class="user_name"><a href="/about/5925730">Vaishali Chaudhuri</a></li>
+      <li class="first inbox">
+        <a href="/conversations?">
+          <span>Inbox</span>
+              <b class="unread-messages-count">18</b>
+        </a>
+      </li>
+      <li><a href="/profile/settings">Settings</a></li>
+    <li class="user_id" style="display: none;">5925730</li>
+    <li class="course_id" style="display: none;">1483575</li>
+    <li id="current_context_code" style="display: none;">course_1483575</li>
+    <li class="user_long_name" style="display: none;">Vaishali Chaudhuri</li>
+    <li class="logout">
+      <form accept-charset="UTF-8" action="/logout" id="identity-logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="delete" /><input name="authenticity_token" type="hidden" value="x67mNi7tuVUosG/NMgJVYBOqBhMMYlz864mbe6MjvYKj1NBSWYDaY1qIAptmLQwKIp1WfT1aaM6avfEW4Ejt+A==" /></div>
+        <a href="/logout" onclick="document.getElementById(&#x27;identity-logout-form&#x27;).submit(); return false">Logout</a>
+</form>    </li>
+    <li id="identity-help-container"><a href="http://help.instructure.com/" class="support_url help_dialog_trigger" data-track-category="help system" data-track-label="help button">Help</a></li>
+</ul>
+
+</div>
+
+      
+        <ul role="navigation" id="menu" aria-label="Main Navigation">
+    <li id="courses_menu_item" class="menu-item">
+      <a href="/courses" class="menu-item-title">
+  Courses &amp; Groups  <span class="menu-item-title-icon"></span> <i class="icon-mini-arrow-down"></i>
+
+</a>
+<div class="menu-item-drop">
+  
+  <table cellspacing="0">
+    <tr>
+      <td class="menu-item-drop-column" id="menu_enrollments">
+  <div class="menu-item-header-container">
+    <span class="menu-item-heading">
+      My Courses
+    </span>
+    <div class="menu-item-customize">
+      <a href="/courses" class="customListOpen">View All or Customize (4)</a>
+    </div>
+  </div>
+  <ul class="menu-item-drop-column-list">
+    <li class="customListItem" data-id="1235296">
+  <a href="/courses/1235296">
+    <span class="name ellipsis" title="MSHI Student Orientation - Student Orientation">MSHI Student Orientation</span>
+      <span class="subtitle ellipsis enrollment_term menu-item-drop-float-right"></span>
+    <span class="subtitle ellipsis">Enrolled as: Student</span>
+  </a>
+</li>
+<li class="customListItem" data-id="1104356">
+  <a href="/courses/1104356">
+    <span class="name ellipsis" title="MSHI Student Portal - MSHI">MSHI Student Portal</span>
+      <span class="subtitle ellipsis enrollment_term menu-item-drop-float-right"></span>
+    <span class="subtitle ellipsis">Enrolled as: Student</span>
+  </a>
+</li>
+<li class="customListItem" data-id="1483576">
+  <a href="/courses/1483576">
+    <span class="name ellipsis" title="Projects in Statistical Computing for Biomedical Data Analytics (Spring 2015) - HS-617-01">Projects in Statistical Computing for Biomedical Data Analytics (Spring 2015)</span>
+      <span class="subtitle ellipsis enrollment_term menu-item-drop-float-right">Spring 2015</span>
+    <span class="subtitle ellipsis">Enrolled as: Student</span>
+  </a>
+</li>
+<li class="customListItem" data-id="1483575">
+  <a href="/courses/1483575">
+    <span class="name ellipsis" title="Statistical Computing for Biomedical Data Analytics (Spring 2015) - HS-616-01">Statistical Computing for Biomedical Data Analytics (Spring 2015)</span>
+      <span class="subtitle ellipsis enrollment_term menu-item-drop-float-right">Spring 2015</span>
+    <span class="subtitle ellipsis">Enrolled as: Student</span>
+  </a>
+</li>
+
+  </ul>
+</td>
+
+      
+      
+    </tr>
+  </table>
+  
+</div>
+
+    </li>
+    <li id="grades_menu_item" class="menu-item">
+      <a href="/grades" class="menu-item-no-drop">
+        Grades
+        
+      </a>
+    </li>
+    <li id="calendar_menu_item" class="menu-item">
+      <a href="/calendar" class="menu-item-no-drop">
+        Calendar
+        
+      </a>
+    </li>
+    
+  </ul>
+
+    </div>
+  </div>
+
+  <div id="instructure_ajax_error_box">
+    <div style="text-align: right; background-color: #fff;"><a href="#" class="close_instructure_ajax_error_box_link">Close</a></div>
+    <iframe id="instructure_ajax_error_result" src="about:blank" style="border: 0;"></iframe>
+  </div>
+
+  
+
+  <div id="wrapper-container">
+    <div id="wrapper">      
+        <div id="left-side" class="list-view">
+            <div class='h1' id="section-tabs-header">
+              HS-616-01
+                <span id="section-tabs-header-subtitle" class="ellipsis">Spring 2015</span>
+            </div>
+          <nav role="navigation" aria-label="context"><ul id="section-tabs"><li class='section '><a href='/courses/1483575' class='home'>Home</a></li><li class='section '><a href='/courses/1483575/announcements' class='announcements'>Announcements</a></li><li class='section '><a href='/courses/1483575/assignments' class='assignments' aria-label='Course Assignments'>Assignments</a></li><li class='section '><a href='/courses/1483575/discussion_topics' class='discussions'>Discussions</a></li><li class='section '><a href='/courses/1483575/grades' class='grades' aria-label='Course Grades'>Grades</a></li><li class='section '><a href='/courses/1483575/users' class='people'>People</a></li><li class='section '><a href='/courses/1483575/files' class='files active'>Files</a></li><li class='section '><a href='/courses/1483575/assignments/syllabus' class='syllabus'>Syllabus</a></li><li class='section '><a href='/courses/1483575/quizzes' class='quizzes'>Quizzes</a></li><li class='section '><a href='/courses/1483575/conferences' class='conferences'>Conferences</a></li><li class='section '><a href='/courses/1483575/collaborations' class='collaborations'>Collaborations</a></li><li class='section '><a href='/courses/1483575/external_tools/19368' class='context_external_tool_19368'>Chat</a></li></ul></nav>
+      </div>
+      <div id="main">
+        <div id="not_right_side">
+          <div id="content-wrapper">
+            <nav aria-label="breadcrumbs" id="breadcrumbs" role="navigation"><ul><li class="home"><a href="/"><span class="ellipsible">      <i class="icon-home standalone-icon"
+         title="My Dashboard">
+        <span class="screenreader-only">My Dashboard</span>
+      </i>
+</span></a></li><li><a href="/courses/1483575"><span class="ellipsible">HS-616-01</span></a></li><li><a href="/courses/1483575/files"><span class="ellipsible">Files</span></a></li><li><a href="/courses/1483575/files/62210251"><span class="ellipsible">class_data.txt</span></a></li></ul></nav>
+            
+            <div id="content" role="main" class="container-fluid">
+                  <iframe id="file_content" src="https://cluster37-files.instructure.com/courses/1018~1483575/files/1018~62210251/course%20files/class_data.txt?download=1&amp;inline=1&amp;sf_verifier=7603043a29eb3226b3b2c4e247436c55&amp;ts=1426349908&amp;user_id=10180000005925730" style="width: 100%; height: 400px;"></iframe>
+  <div id="sequence_footer" data-course-id="1483575" data-asset-id="62210251" data-asset-type="File"></div>
+
+
+
+            </div>
+          </div>
+        </div>
+        <div id="right-side-wrapper">
+          <aside id="right-side" role="complementary">
+            
+          </aside>
+        </div>
+      </div>
+      <footer role="contentinfo" id="footer">
+        <a href="http://www.instructure.com" class="footer-logo">
+          <span class="screenreader-only">
+            By Instructure
+          </span>
+        </a>
+        <span id="footer-links">
+          <a target="_blank" href="http://eepurl.com/1LSkT">User Research</a>
+          <a href="http://help.instructure.com/" class="support_url help_dialog_trigger" data-track-category="help system" data-track-label="help button">Help</a>
+          <a href="https://usfca.instructure.com/privacy_policy">Privacy policy</a>
+<a href="https://usfca.instructure.com/terms_of_use">Terms of service</a>
+<a href="http://facebook.com/instructure">Facebook</a>
+<a href="http://twitter.com/instructure">Twitter</a>
+
+        </span>
+      </footer>
+    </div>
+  </div>
+
+
+
+    <div style="display:none;"><!-- Everything inside of this should always stay hidden -->
+        <a href="/page_views/ac52a430-ac93-0132-0e45-1208b4333975" id="page_view_update_path">&nbsp;</a>
+        <div id="page_view_id">ac52a430-ac93-0132-0e45-1208b4333975</div>
+    </div>
+    <div id="cant_record_dialog" style="display: none;">
+  <div>
+    In order to create video or audio recordings your computer needs to be 
+    webcam-enabled.  If you don&#x27;t have a webcam on your computer, you can still
+    record audio-only messages by first installing the Google Video Chat
+    plugin.
+  </div>
+  <div style="text-align: center; font-size: 1.5em; margin: 10px;">
+    <a href="http://www.google.com/chat/video" target="_blank" class="btn">Install the Video Plugin</a>
+  </div>
+  <div class="links" style="text-align: right; font-size: 0.8em; display: none;">
+    <a href="#" class="cant_record_link">Don&#x27;t have a webcam?</a>
+  </div>
+</div>
+  <div id='aria_alerts' class='hide-text affix' role="alert" aria-live="assertive"></div>
+  <script>
+  INST = {"environment":"production","allowMediaComments":true,"kalturaSettings":{"domain":"nv.instructuremedia.com","resource_domain":"nv.instructuremedia.com","rtmp_domain":"fms-prod.instructuremedia.com","partner_id":"9","subpartner_id":"0","player_ui_conf":"0","kcw_ui_conf":"0","upload_ui_conf":"0","max_file_size_bytes":534773760,"do_analytics":false,"use_alt_record_widget":true,"hide_rte_button":false,"js_uploader":true},"googleAnalyticsAccount":"UA-9138420-1","disableScribdPreviews":true,"enableHtml5FirstVideos":true,"logPageViews":true,"maxVisibleEditorButtons":3,"editorButtons":[{"name":"Internet Archive","id":11621,"url":"https:\/\/lti-examples.heroku.com\/tool_redirect?url=%2Fstorify.html","icon_url":"https:\/\/lti-examples.heroku.com\/icons\/storify.png","width":690,"height":530},{"name":"YouTube","id":36771,"url":"https:\/\/www.edu-apps.org\/tool_redirect?id=youtube","icon_url":"https:\/\/www.edu-apps.org\/tools\/youtube\/icon.png","width":690,"height":530},{"name":"TED Ed","id":40784,"url":"https:\/\/www.edu-apps.org\/tool_redirect?id=ted_ed","icon_url":"https:\/\/www.edu-apps.org\/tools\/ted_ed\/icon.png","width":690,"height":530},{"name":"Khan Academy","id":60711,"url":"https:\/\/www.edu-apps.org\/tool_redirect?id=khan_academy","icon_url":"https:\/\/www.edu-apps.org\/tools\/khan_academy\/icon.png","width":690,"height":530},{"name":"educreations","id":109051,"url":"https:\/\/www.edu-apps.org\/tool_redirect?id=educreations","icon_url":"https:\/\/www.edu-apps.org\/tools\/educreations\/icon.png","width":690,"height":530},{"name":"Internet Archive","id":109052,"url":"https:\/\/www.edu-apps.org\/tool_redirect?id=archive","icon_url":"https:\/\/www.edu-apps.org\/tools\/archive\/icon.png","width":690,"height":530},{"name":"Twitter","id":109053,"url":"https:\/\/www.edu-apps.org\/twitter_lti\/","icon_url":"https:\/\/www.edu-apps.org\/assets\/inst_lti_twitter\/icon.png","width":475,"height":490}]};
+  ENV = {"current_user_id":"5925730","current_user":{"id":"5925730","display_name":"Vaishali Chaudhuri","avatar_image_url":"https:\/\/usfca.instructure.com\/images\/thumbnails\/55293963\/fFbdOsrKPHZNtGDde1G0K3KyN9xXabSx8ULb5eLI","html_url":"https:\/\/usfca.instructure.com\/about\/5925730"},"current_user_roles":["user","student"],"files_domain":"cluster37-files.instructure.com","DOMAIN_ROOT_ACCOUNT_ID":10180000000090279,"SETTINGS":{"open_registration":false,"use_high_contrast":false},"badge_counts":{"submissions":0},"context_asset_string":"course_1483575","ping_url":"https:\/\/usfca.instructure.com\/api\/v1\/courses\/1483575\/ping","TIMEZONE":"America\/Los_Angeles","CONTEXT_TIMEZONE":"America\/Los_Angeles","LOCALE":"en-US","TOURS":[],"notices":[]};
+
+  // TODO: move this out when we have a single require call
+  require = {
+    translate: true,
+    baseUrl: '/optimized',
+    paths: {
+    "common":"compiled\/bundles\/common",
+    "jqueryui":"vendor\/jqueryui",
+    "uploadify":"..\/flash\/uploadify\/jquery.uploadify-3.2.min",
+    "compiled\/tinymce":"compiled\/tinymce.js?v2",
+    "instructure_misc_plugin":"plugins\/instructure_misc_plugin",
+    "multiple_root_accounts":"plugins\/multiple_root_accounts",
+    "migration_tool":"plugins\/migration_tool",
+    "demo_site":"plugins\/demo_site",
+    "canvasnet_registration":"plugins\/canvasnet_registration",
+    "analytics":"plugins\/analytics",
+    "compiled\/registration\/main_without_extensions":"compiled\/registration\/main",
+    "compiled\/registration\/main":"compiled\/registration\/main_with_extensions",
+    "compiled\/registration\/signupDialog_without_extensions":"compiled\/registration\/signupDialog",
+    "compiled\/registration\/signupDialog":"compiled\/registration\/signupDialog_with_extensions",
+    "compiled\/bundles\/modules\/account_quota_settings_without_extensions":"compiled\/bundles\/modules\/account_quota_settings",
+    "compiled\/bundles\/modules\/account_quota_settings":"compiled\/bundles\/modules\/account_quota_settings_with_extensions",
+    "canvas_quizzes":"client_apps\/canvas_quizzes",
+    "app\/config\/environments\/production":"empty:"},
+    packages : [{"name":"ic-ajax","location":"bower\/ic-ajax\/dist\/amd"},{"name":"ic-styled","location":"bower\/ic-styled"},{"name":"ic-menu","location":"bower\/ic-menu"},{"name":"ic-tabs","location":"bower\/ic-tabs\/dist\/amd"},{"name":"ic-droppable","location":"bower\/ic-droppable\/dist\/amd"},{"name":"ic-sortable","location":"bower\/ic-sortable\/dist\/amd"},{"name":"ic-modal","location":"bower\/ic-modal\/dist\/amd"},{"name":"ic-lazy-list","location":"bower\/ic-lazy-list"},{"name":"ember-qunit","location":"bower\/ember-qunit\/dist\/amd"}],
+    shim: {
+    'bower/react-router/dist/react-router': {
+      deps: ['react'],
+      exports: 'ReactRouter'
+    },
+    'bower/react-modal/dist/react-modal': {
+      deps: ['react']
+    },
+    'bower/ember/ember': {
+      deps: ['jquery', 'handlebars'],
+      exports: 'Ember'
+    },
+    'bower/ember-data/ember-data': {
+      deps: ['ember'],
+      exports: 'DS'
+    },
+    'bower/handlebars/handlebars.runtime': {
+      exports: 'Handlebars'
+    },
+    'vendor/FileAPI/FileAPI.min': {
+      deps: ['jquery', 'vendor/FileAPI/config'],
+      exports: 'FileAPI'
+    },
+    'uploadify': {
+      deps: ['jquery'],
+      exports: '$'
+    },
+    'vendor/bootstrap-select/bootstrap-select' : {
+      deps: ['jquery'],
+      exports: '$'
+    },
+    'vendor/jquery.jcrop': {
+      deps: ['jquery'],
+      exports: '$'
+    },
+    'vendor/jquery.smartbanner': {
+      deps: ['jquery'],
+      exports: '$'
+    },
+    'handlebars': {
+      deps: ['bower/handlebars/handlebars.runtime.amd'],
+      exports: 'Handlebars'
+    },
+    'vendor/i18n': {
+      exports: 'I18n'
+    },
+    'vendor/react-infinite-scroll.min' : {
+      deps: ['react'],
+      exports: 'InfiniteScroll'
+    }
+  }
+,
+    map: {"canvas_quizzes":{"lodash":"underscore","d3":"vendor\/d3.v3","backbone":"vendor\/backbone","jquery\/instructure_date_and_time":"jquery.instructure_date_and_time","react":"old_unsupported_dont_use_react","react-router":"old_unsupported_dont_use_react-router"}},
+    waitSeconds: 60
+  };
+</script>
+
+<script src="/optimized/vendor/require.js?1426282207" type="text/javascript"></script>
+<script src="/optimized/compiled/bundles/common.js?1426282249" type="text/javascript"></script>
+<script src="/optimized/compiled/bundles/module_sequence_footer.js?1426282226" type="text/javascript"></script>
+<script src="/optimized/compiled/bundles/file_inline.js?1426282220" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+          (function() {
+            var inject = function(src) {
+              var s = document.createElement('script');
+              s.src = src;
+              s.type = 'text/javascript';
+              document.body.appendChild(s);
+            };
+            var srcs = ["https:\/\/canvas.usfca.edu\/overrides.js"];
+            require(['jquery'], function() {
+              for (var i = 0, l = srcs.length; i < l; i++) {
+                inject(srcs[i]);
+              }
+            });
+          })();
+
+//]]>
+</script>
+
+
+
+<script>
+// Determines if the scripts are loaded.
+// When we get everything out of the views, and have a single top-level
+// `require`, this becomes meaningless and will be abandoned.
+(function() {
+  var attempts = 0;
+  var timeout = 10;
+  var check = function() {
+    attempts++;
+    var done = !window.requirejs.s.contexts._.defQueue.length
+    var giveup = attempts === 100; // 1 second
+    if (done || giveup) {
+      var className = document.documentElement.className;
+      document.documentElement.className = className.replace(/scripts-not-loaded/, '');
+      return;
+    }
+    setTimeout(check, timeout);
+  };
+
+  check();
+}).call(this);
+</script>
+
+</div> <!-- #application -->
+</body>
+</html>
