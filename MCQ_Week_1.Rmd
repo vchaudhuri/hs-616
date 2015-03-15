@@ -7,7 +7,6 @@ output: html_document
 ## Lecture 1a
   
 What is the type of variable 'd' below 
-
 ```
 f <- sqrt
 x <- 1:20
@@ -15,7 +14,6 @@ y <- f(x)
 z <- x^2
 d <- data.frame(x, y, z)
 ```
-
 
 * list
 * matrix
@@ -26,7 +24,6 @@ d <- data.frame(x, y, z)
 ## Lecture 1b
 
 Consider the following code:What appears to be  the correct output of the [head(as.integer(in_circle))] ?
-
 ```
 N <-10000
 x <- runif(N)
@@ -76,8 +73,7 @@ A <- matrix(1:4, nrow=1)
 
 ## Lecture 3b
 
-Consider the eigen equation
-If A is the identity matrix. what is lambda?
+Consider the eigen equation. If A is the identity matrix. what is lambda?
 
 * lamba is equal to 1
 * lambda is infinity
@@ -88,7 +84,6 @@ If A is the identity matrix. what is lambda?
 
 Consider the following code:All the below lines of code perform the same function but have different levels of bracket or curly braces. would it affect the performance cost and which will be the fastest ? 
 (Hint: R treats curly brackets as a “special” operator, whose arguments are not automatically evaluated, but it treats parentheses as a “built in” operator whose arguments (just one for parentheses) are evaluated automatically, with the results of this evaluation stored in a  list)
-
 ```
 a <- function(x) x = 1/{
     1 + x
@@ -111,7 +106,6 @@ comp
 ## Lecture 4b
 
 Consider the following code  does mean1 and mean2 have equal run times or differ in run times? 
-
 ```
 mean1 <- function(x) mean(x)
 mean2 <- function(x) sum(x) / length(x)
@@ -180,7 +174,7 @@ str(result)
 
 ## Lecture 6b
 
-which is/are the dplyr (may also use magrittr package) approach to search for a data point from a dataframe called 'flight' by 1st month and 1st DayofMonth
+What is the dplyr (may also use magrittr package) approach(es) to search for a data point from a dataframe called 'flight' by 1st month and 1st DayofMonth
 ```
 A<-flights[flights$Month==1 & flightsDayofMonth==1,]
 B<-filter(flights, Month==1, DayofMonth==1)
@@ -205,7 +199,6 @@ The two most important properties of Tidyr package is :Each column is a variable
 ## Lecture 7b
 
 In the following code what does the function xtab do ?
-
 ```
 T_shirts <- data.frame(
   sex=sample(c("M","F"), 100, replace=T), 
