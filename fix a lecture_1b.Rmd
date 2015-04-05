@@ -1,0 +1,223 @@
+---
+title: "Lecture 1b"
+author: "Vaishali Chaudhuri"
+date: "April 3, 2015"
+output: ioslides_presentation
+---
+
+## What is  Github
+
+- Github is like a mini filesystem with  powerful tools of version control built in
+
+- Git thinks of its data more like a set of snapshots of a miniature filesystem.
+
+- Most operations in Git only need local files and resources to operate 
+
+- When you do actions in Git, nearly all of them only add data to the Git database. It is hard to  erase data in any way
+
+## The Three States
+
+Git has three main states that your files can reside in: 
+
+- Committed means that the data is safely stored in your local database 
+
+- Modified means that you have changed the file but have not committed it to your database yet
+
+- Staged means that you have marked a modified file in its current version to go into your next commit snapshot
+
+
+This leads us to the three main sections of a Git project: the Git directory, the working directory, and the staging area.
+
+
+## How to install git on computer 
+
+- In Mac
+    - GitHub has a Mac client! You can use it without ever touching the command line.
+
+- In Windows
+  - Download and install the latest version of Git.
+  - On your computer, open the Terminal application.
+  - Tell Git your name so your commits will be properly labeled. Type everything        after the $ here:
+
+```
+$ git config --global user.name "YOUR NAME"
+
+```
+-Associate  the email address that will be associated with your Git commits. Keep your email address setting as private.
+
+```
+$ git config --global user.email "YOUR EMAIL ADDRESS"
+
+```
+
+## Next steps: Authenticating with GitHub from Git
+
+- When you connect to a GitHub repository from Git, you'll need to authenticate with GitHub using either HTTPS or SSH.
+
+- Connecting over HTTPS (recommended)
+
+  - If you clone with HTTPS, you can cache your GitHub password in Git using a credential helper.
+
+- Connecting over SSH
+
+  _ If you clone with SSH, you must generate SSH keys on each computer you use to push or pull from GitHub.
+
+## How to create a repo
+
+
+On GitHub, one can store all kinds of projects in repositories.
+
+-Personal repositories belong to user accounts,  after you've signed up for GitHub, create your first repository!
+
+-   In the upper-right corner of you account page click- New repository
+-   Create a short, memorable name for your repository. For example, "hello-world".
+
+- Choose between creating a public or private repository.
+
+- Public repositories are a great choice and visible to any user on GitHub, so you can benefit from a collaborative community.
+- Private repositories are only available for paid accounts only available to you, the repository owner.
+
+
+## Commit your first change
+
+A commit is like a snapshot of all the files in your project at a particular point in time.
+
+ - README files are a great place to describe your project in more detail, or add some documentation such as how to install or use your project. 
+ - The contents of your README file are automatically shown on the front page of your repository.
+
+
+
+Let's commit a change to the README file.
+
+## Commit changes (contd.)
+
+- In your repository's list of files, click README.md.
+- Above the file's content, click .
+- On the Edit file tab , type some information about yourself.
+- Above the new content, click Preview changes.
+- File preview viewReview the changes you made to the file. You'll see the new content in green.
+- At the bottom of the page, under "Commit changes," type a short, meaningful commit message that describes the change you made to the file.
+- Click Commit changes.
+
+Congratulations! You have now created a repository, including a README file, and created your first commit on GitHub.
+
+## Introducing concepts in LaTeX document
+
+- Why write in LaTeX?
+    - Pros (why prepare presentations using LaTeX):
+        - The software for preparing the presentation is free.
+        - The outcome is platform-independent: you can display PDF documents pretty     much with any OS.
+        - You get the typographic advantages of LaTeX, especially in typesetting of text and mathematics.
+    - Cons (why you might prefer MS Powerpoint/Word):
+        - If you have no or very little math, the advantages of LaTeX becomes less critical.
+        - Some aspects of animations may be admittedly harder to create with LaTeX 
+        - It is (yet) impossible to embed movies or sound in the PDF presentation 
+  
+## Write a document with  in LaTeX using scientific concepts
+
+Typesetting mathematics is one of LaTeX's greatest strengths. 
+
+- If your document requires only a few simple mathematical formulas, plain LaTeX has most of the tools that you will need. 
+
+- If you are writing a scientific document that contains numerous complicated formulas, the 'amsmath' package introduces several new commands that are more powerful and flexible than the ones provided by LaTeX. 
+
+
+## Literate Calculation Exercise
+
+- Use simple $\LaTeX$ formatting to typeset a mathematical equation in an RMarkdown document.
+
+- check out (calcCheck1.RMD/pdf) as an example of Latex scientific document for homework:
+https://github.com/rmhorton/statprog/tree/master/week_01_teach_yourself_R
+
+- check out how to write more Mathematical font at:
+
+http://en.wikibooks.org/wiki/LaTeX/Mathematics
+
+
+## What would this function do
+
+What does this function do?
+
+```{r, eval=FALSE}
+function(N) {
+  x <- runif(N) 
+  y <- runif(N)
+  4 * sum( (x^2 + y^2) < 1 )/N
+}
+```
+* How would you give this function  a name?
+
+## Solution to the previous problem 
+
+- start of by making two uniformly distributed random numbers x and y
+- ((x^2 + y^2) < 1 ) -This expression  depicts  the square of each x and y  such that the square of them is less than 1 
+- Geometrically thinking on a graph this represents  random points on the graph whose sum of squares  is going to be less than 1 . 
+- (sqrt(x^2 +y^2) < 1)-The square root of the (sum( (x^2 + y^2)) will give distance of x and y vector from point zero.
+- ((x^2 + y^2) < 1 ). This gives a logical vector
+_ sum of logical vector coerces a logical vector into true and false and in this case tells if the distance of a point from zero is less than 1 or not
+
+
+
+## Soln to the problem continued...
+- Multiplication by 4 gives the representation in all the four quadrants from distance 0,0 as each quadrant is a mirror image of each other
+- Division by N gives the ratio of points in a unitcircle inside a unit square
+$$ r = 1 $$
+$$ A_{circle} = 4* \pi r^2  $$
+$$ A_{square} = (2 r) ^ 2 = 4r^2 $$
+$$  4* \pi r^2 / 4r^2 = \pi $$
+Therefore this function can be named 
+ - How to approximately estimate value of Pi 
+
+
+
+## Homework Exercise
+
+
+```{r, eval=FALSE}
+function(N) {
+  x <- runif(N)
+  y <- runif(N)
+  4 * sum( (x^2 + y^2) < 1 )/N
+}
+```
+
+- What is the type of the parameter `N`? (hint: see `?runif`)
+- How can you call this function to see what happens?
+- What is the type of the argument to `sum()`?
+
+
+## Homework Exercise Review
+
+What will this code show?
+
+```{r throwing_darts, height=5, width=5}
+N <- 10000
+x <- runif(N, min=-1.0, max=1.0)
+y <- runif(N, min=-1.0, max=1.0)
+plot(x, y, pch=16, col=ifelse(x^2 + y^2<1, "red", "blue"))
+```
+
+## Homework Exercise Review
+
+What will this code show?
+
+```{r darts_one_quad, height=5, width=5}
+N <- 10000
+x <- runif(N)
+y <- runif(N)
+plot(x, y, pch=16, col=ifelse(x^2 + y^2<1, "red", "blue"))
+```
+
+
+## Homework Exercise Review
+
+What will this code show?
+
+```{r review_estimate_pi}
+estimate_pi <- function(N) {
+    x <- runif(N)
+    y <- runif(N)
+  4 * sum( (x^2 + y^2) < 1 )/N
+}
+estimate_pi(100000)
+```
