@@ -16,7 +16,7 @@ number of correlated variables into a much smaller set of uncorrelated variables
 * PCA is a data expansion technique that transforms a smaller
 number of  variables into a much larger set of correlated variables  and EFA is a technique to uncover the explore the underlying factors in a data set
 * PCA and EFA are essentially the same technique of data reduction technique to find correlated patterns among different variables.
-*PCA is a  technique to choose selective variables which matter in the data and compute the correlation in data only among those vraiables and EFA is a technique to extract linear relationship between all variables.
+* PCA is a  technique to choose selective variables which matter in the data and compute the correlation in data only among those vraiables and EFA is a technique to extract linear relationship between all variables.
 
 ## Lecture 8b
 
