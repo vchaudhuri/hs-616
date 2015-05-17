@@ -2,7 +2,7 @@
 title: "MCQs  from week 8-16"
 author: "Vaishali Chaudhuri"
 date: "March 30, 2015"
-output: html_document
+output: pdf_document
 ---
 
 ## Lecture 8a 
@@ -146,4 +146,12 @@ What is the Bayesian Information criterion
 * It offers a relative estimate of the information lost when a given model is used to represent the process that generates the data
 * is a method for selecting the most appropriate model among a set of competitors for a given data set
 
+## Lecture 15a
+
+In Andrew Ng's lecture on Learning curves which of these statements is correct?
+
+* A small training set results in a small training error but a large cross validation error
+* Training error and cross validation error are directly proportaional to each other in a data set which fits a quadratic equation
+* A small training data set leads to a large training error
+* If a hypothesis has high bias increasing the training set size makes the line fit better
 
