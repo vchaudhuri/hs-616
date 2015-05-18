@@ -20,7 +20,7 @@ number of correlated variables into a much smaller set of uncorrelated variables
 What is the most common criteria to decide which components to be retained in PCA
 
 * Selecting the number of components to retain by examining the eigenvalues of the k  correlation matrix among the variables 
-* Selecting the number of components needed to account for some threshold cumulative amount of variance in the variables (for example, 80%) 
+* Selecting the number of components that correlate with each other and discarding the rest.
 * Basing the number of components on existing knowledge that affects the data
 * Scree plot: this is a graphical method in which you choose the factors until a break in the graph
 
