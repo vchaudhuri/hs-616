@@ -96,10 +96,10 @@ mod = lm(train_y ~ train_x).
 ```
 What would be the code in R if (train_x=1,2,3) ?
 
-* For train_x = 1, 2, and 3, use predict(mod, data.frame(train_x = c(1, 2, 3)))
-* For train_x = 1, 2, and 3, use predict(mod, data.frame(train_x(1, 2, 3)))
-* For train_x = 1, 2, and 3, use crossval(mod, data.frame(train_x = c(1, 2, 3)))
-* For train_x = 1, 2, and 3, use coxph(mod, data.frame(train_x = c(1, 2, 3))).
+* predict(mod, data.frame(train_x = c(1, 2, 3)))
+* predict(mod, data.frame(train_x(1, 2, 3)))
+* crossval(mod, data.frame(train_x = c(1, 2, 3)))
+* coxph(mod, data.frame(train_x = c(1, 2, 3))).
 
 ## Lecture 12b
 
