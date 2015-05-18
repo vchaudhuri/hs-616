@@ -112,7 +112,7 @@ Where is the method of Least squares most useful?
 
 ## Lecture 13a
 
-One cannot  tell how a variable affects the prediction in randomForest package. However  by which plot in that package can one still predict how the response would change as one changes the variable?
+One cannot  tell how a variable affects the prediction in randomForest package. Which plot in randomForest package predicts the change in response as one changes the variable?
 
 * By partial dependence plot 
 * By partial independence plot
