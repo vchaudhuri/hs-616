@@ -11,7 +11,7 @@ What is the difference between Principal component analysis (PCA) and explorator
 
 * PCA is a data reduction technique that transforms a larger
 number of correlated variables into a much smaller set of uncorrelated variables  and EFA is a technique to uncover the latent structure in a given set of variables
-* EFA analysis accounts for a maximal amount of variance in observed variables vesus PCA is linear combinations of the underlying and unique factors
+* EFA analysis accounts for a maximal amount of variance in observed variables versus PCA is linear combinations of the underlying and unique factors
 * PCA and EFA are essentially the same technique of data reduction technique to find correlated patterns among different variables.
 * PCA is a  technique to choose selective variables which matter in the data and compute the correlation in data only among those vraiables and EFA is a technique to extract linear relationship between all variables.
 
