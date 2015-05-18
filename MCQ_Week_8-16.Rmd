@@ -13,7 +13,7 @@ What is the difference between Principal component analysis (PCA) and explorator
 number of correlated variables into a much smaller set of uncorrelated variables  and EFA is a technique to uncover the latent structure in a given set of variables
 * EFA analysis accounts for a maximal amount of variance in observed variables versus PCA is linear combinations of the underlying and unique factors
 * PCA and EFA are essentially the same technique of data reduction technique to find correlated patterns among different variables.
-* PCA is a  technique to choose selective variables which matter in the data and compute the correlation in data only among those vraiables and EFA is a technique to extract linear relationship between all variables.
+* PCA is a  technique to choose selective variables which matter in the data and compute the correlation in data only among those variables and EFA is a technique to extract linear relationship between all variables.
 
 ## Lecture 8b
 
@@ -48,7 +48,7 @@ Which feature is defined by scale_size_continuous in ggplot?
 What does the corrgram package do?
 
 * Calculates correlation of variables and displays the results graphically.
-* Tabulates  a correlation matrix and plots a kernel denisty map
+* Tabulates  a correlation matrix and plots a kernel density map
 * Draws a boxplot of the  most correlated variables with independent variable
 * Draws a heat map of the data
 
@@ -59,7 +59,7 @@ What function call is used to launch a shiny app in a console?
 * runApp
 * read.shinyApp
 * read.App like read.csv to access a .csv file
-* ui.r and server.r have to be called sperately
+* ui.r and server.r have to be called separately
 
 ## Lecture 10b
 
@@ -132,16 +132,16 @@ Simpson’s Paradox describes a situation in which variables X and Y are positiv
 
 What are ROCR's 3 commands to produce a simple ROC plot
 
-* Prediction,performance, plot
+* Prediction, performance, plot
 * fit, prediction, plot
 * fit, performance, plot
-* lm,fit,plot
+* lm, fit, plot
 
 ## Lecture 14b
 
 What is the Bayesian Information criterion
 
-* is a criterion for model selection among a finite set of models; the model with the lowest BIC is preferred.
+* It is a criterion for model selection among a finite set of models; the model with the lowest BIC is preferred.
 * It is  a measure of the relative quality of a statistical model for a given set of data
 * It offers a relative estimate of the information lost when a given model is used to represent the process that generates the data
 * is a method for selecting the most appropriate model among a set of competitors for a given data set
