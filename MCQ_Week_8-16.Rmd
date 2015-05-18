@@ -29,10 +29,12 @@ What is the most common criteria to decide which components to be retained in PC
 In the following chunk of code
 ```
 library(ggplot2)
-d=data.frame(beauty=c(1,2,6,4,4,6,7,8), intelligence=c(8,4,7,5,4,9,2,3), speed=c(7,6,9,5,7,6,7,8), gender=c('m','m','f','m','f','f','f','m'))
+d=data.frame(beauty=c(1,2,6,4,4,6,7,8), intelligence=c(8,4,7,5,4,9,2,3), 
+speed=c(7,6,9,5,7,6,7,8), gender=c('m','m','f','m','f','f','f','m'))
 ggplot() + 
 scale_size_continuous(range= c(4,12)) +
-geom_point(data=d, mapping=aes(x=intelligence, y=beauty, shape=gender, color=gender, size=speed)) 
+geom_point(data=d, mapping=aes(x=intelligence, y=beauty, shape=gender, 
+color=gender, size=speed)) 
 ```
 Which feature is defined by scale_size_continuous in ggplot?
 
