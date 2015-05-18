@@ -90,11 +90,11 @@ In the layout function of igraph package which  treats the edges as a set of spr
 
 ## Lecture 12a
 
-In the following linear model
+In the  linear model
 ```
 mod = lm(train_y ~ train_x).
 ```
-if a list of X's(here train_x) is passed to get it's predicted Y . What would be the code in R?
+What would be the code in R if (train_x=1,2,3) ?
 
 * For train_x = 1, 2, and 3, use predict(mod, data.frame(train_x = c(1, 2, 3)))
 * For train_x = 1, 2, and 3, use predict(mod, data.frame(train_x(1, 2, 3)))
@@ -105,14 +105,14 @@ if a list of X's(here train_x) is passed to get it's predicted Y . What would be
 
 Where is the method of Least squares most useful?
 
-* Approximate solution  in which there are more equations than unknowns
-* Approximate solution  in which there are more unknowns  than equations
-* Approximate solution  in which there are  equations and unknowns are equal
-* Approximate solution  in which   equations is a multiples of the unknowns.
+* To approximate a solution  where there are more equations than unknowns
+* To approximate a solution  where there more unknowns  than equations
+* To approximate a solution  where there  equations and unknowns are equal
+* To approximate a solution  where the  equations are multiples of the unknowns.
 
 ## Lecture 13a
 
-One cannot easily tell how one variable affects the prediction using RandomForest package. How can one still predict how response will change as one changes predictor?
+One cannot  tell how a variable affects the prediction in randomForest package. However  by which plot in that package can one still predict how the response would change as one changes the variable?
 
 * By partial dependence plot 
 * By partial independence plot
@@ -121,11 +121,11 @@ One cannot easily tell how one variable affects the prediction using RandomFores
 
 ## Lecture 13b
 
-Simpson’s Paradox describes a situation in which variables X and Y are positively related overall, but suddenly become negatively related when conditioned on a third variable Z. What is statement is False:
+Simpson’s Paradox describes a situation in which variables X and Y are positively related overall, but suddenly become negatively related when conditioned on a third variable Z. Which  statement is False:
 
-* It is a forward stepwise regression, which aims to add the most important factors first.
-* It is as simply being a problem arising from adding a minor factor to a model before including a major factor.
-* It is similar to forward stepwise regression
+* Simpson's paradox is a forward stepwise regression where the most important variables are considered first.
+* Simpson's paradox is  a problem arising from adding a minor factor to a model before including a major factor.
+* Simpson's paradox is a forward stepwise regression
 * Simpson’s is not a paradox in the first place, and instead is simply the effect of using variables in the wrong order.
 
 ## Lecture 14a
