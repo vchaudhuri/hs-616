@@ -11,8 +11,7 @@ What is the difference between Principal component analysis (PCA) and explorator
 
 * PCA is a data reduction technique that transforms a larger
 number of correlated variables into a much smaller set of uncorrelated variables  and EFA is a technique to uncover the latent structure in a given set of variables
-* PCA is a data expansion technique that transforms a smaller
-number of  variables into a much larger set of correlated variables  and EFA is a technique to uncover the explore the underlying factors in a data set
+* EFA analysis accounts for a maximal amount of variance in observed variables vesus PCA is linear combinations of the underlying and unique factors
 * PCA and EFA are essentially the same technique of data reduction technique to find correlated patterns among different variables.
 * PCA is a  technique to choose selective variables which matter in the data and compute the correlation in data only among those vraiables and EFA is a technique to extract linear relationship between all variables.
 
@@ -62,7 +61,7 @@ What function call is used to launch a shiny app in a console?
 
 ## Lecture 10b
 
-The five Five basic verbs: "filter", "select", "arrange", "mutate", "summarise",(plus group_by) are functionalities of the dplyr pckage or manipulate package or both
+The five basic verbs: "filter", "select", "arrange", "mutate", "summarise",(plus group_by) are functionalities of the dplyr pckage or manipulate package or both
 
 * dplyr
 * manipulate
