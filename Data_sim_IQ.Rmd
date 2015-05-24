@@ -1,0 +1,136 @@
+---
+title: "DATA SIMULATION PROJECT FOR HS-616"
+author: "Vaishali Chaudhuri"
+date: "May 23, 2015"
+output: pdf_document
+---
+
+## Title : A simulated study that shows the association between breastfeeding and long term implications on Intelligence Quotience level 
+
+##### Reference Links :http://jama.jamanetwork.com/article.aspx?articleid=194901
+
+### Study design , Setting and Participants described in paper
+This population study is a prospective longitudinal sub-sample  derived from the main  Copenhagen Perinatal Cohort comprising of  9125 individuals born at the Copenhagen University Hospital between October 1959 and December 1961.This sub -cohort consists of  a sample of 973 men and women   When the cohort was established, demographic, socioeconomic, prenatal, and postnatal medical data were recorded prospectively during pregnancy, at delivery, and at a 1-year examination. Information on duration of breastfeeding was collected by a physician who interviewed the mothers at the 1-year examination.   
+                 
+#### Introduction:
+
+This is an Data Simulation Project that references the  above link and builds the story based on the paper. 
+Breastfeeding has clear short-term benefits for child survival through reduction of morbidity and mortality from infectious diseases.The paper concludes that certain other parameters (parental and infant) determine Intelligence during adult stage of life  determined by WAIS scores
+Analytics on this simulated dataset is aimed to first generate the data set and then find the answer which mystery parameter has long term benefits on IQ and what's the relation between IQ and the mystery parameter. 
+
+#### Participant's data
+* Sex : 976 singletons (490 males and 486 females)
+* Age : Mean assessment age of 27.2 years (SD = 4.4; range, 20-34 years)
+
+#### Main Outcome Measure
+Intelligence was assessed using the Wechsler Adult Intelligence Scale (WAIS) at a mean age of 27.2 years in the mixed-sex sample
+
+#### Factors that affect the outcome
+There is a main factor (not revealed but left for the analyst to come up with) on which the out come depended however thirteen potential confounders were included as covariates: It is upto the analyst to predict which is the primary variable on which the WAISscore is dependant .
+
+```{r}
+generateTable <- function(N=976){ 
+  
+  ## Statistical Data  for the Parents ##
+  
+  MA <- runif(N, min=(29.3-6.6), max=(29.3+6.6))   # Maternal Age at time of pregnancy
+  PSS <-runif(N, min=(4.6-1.9), max=(4.6+1.9)) # Social_Status
+  BE <- runif(N, min=(2.6-0.8), max=(2.6+0.8)) # Breadwinners_Education
+  MH <- runif(N, min=(163.3-5.4), max=(163.3+5.4)) # Mother's Height (cm)
+  MW <- runif(N, min=(4.2-2.5), max=(4.2+2.5)) # Mother's weight gain during pregnancy (kg)
+  CC <- runif(N, min=(3.7-1.2), max=(3.7+1.2)) # cigerrate consumption during third trimester (no.s)
+  NP <- runif(N, min=(2.0-1.2), max=(2.0+1.2)) # No. of pregnancies
+  PC <- runif(N, min=(70.6-37.6), max=(70.6+37.6)) # Pregnancy Complications
+  DC <- runif(N, min=(71.6-40.5), max=(71.6+40.5)) # Delivery Complications
+  
+  
+  ##### Infant Characteristics
+  #Intelligence scores were also affected by 3 factors defined as infant characteristics   at the time of birth
+  
+  GA <-runif(N, min=(39.2-2.0), max=(39.2+2.0)) # Estimated gestational age(GA) (wk)
+  BW <-runif(N, min=(3251-562), max=(3251+562)) # Birth weight(BW) (g)
+  BL <-runif(N, min=(51.1-2.6), max=(51.1+2.6)) # Birth height(BL) (cm)
+  
+  ## The most relevant factor  affecting Intelligence score was Duration of Breast feeding.
+  #Duration of breastfeeding was positively associated with mother's age, social status, education, birth weight, birth length,
+  ##and negatively associated with  cigarette consumption.
+  
+  
+  DBF<- (10^(-0.3) * (MA) + 
+           10^(-1) * (PSS) +
+           10^(-1.2) * (BE) +
+           10^(-2.4) * (BL) +
+           -10^(-0.4) *(CC) -6)
+  # a=-0.3,b=-1,c=-1.2,d=-2.4,e=-0.4
+  
+  # Adding an outlier to DBF. ## The output is given in the form of WAISscore which measures IQ levels of the participant 
+  # using verbal and performance measures
+  DBFS <- append(DBF, 18,16)  # #Fitted an outlier to make  the data horizontal
+  WAISscore <- 20*DBF - DBF^2 + rnorm(N, sd=2)  # add some noise
+
+  dataframe<- data.frame(MA,PSS,BE,MH,MW,CC,NP,PC,DC,DBF,GA,BW,BL, WAISscore)
+  
+  }
+  
+Population_dataset<-generateTable(10e3)
+head(Population_dataset)
+```
+
+To choose the correct coefficient values for the Duration of Breast feeding forming an equation between ,Maternal Age ,Social Status, Bread winner's education, Birth length,Cigertte consumption) 
+
+```{r, eval=FALSE}
+DBF_df <- data.frame(MA ,PSS, BE, BL,CC)
+logistic <- function(t) 1 / (1 + exp(-t))
+library(manipulate)
+manipulate({
+  DBF <- with (DBF_df ,  
+               10^a * (MA) + 
+               10^b * (PSS) +
+               10^c * (BE) +
+               10^d * (BL) +
+              -10^e * (CC) -6)
+              hist(DBF, breaks=50)
+}, 
+a=slider(-9, 9, step=0.1, initial = -1), 
+b=slider(-9, 9, step=0.1, initial = -1), 
+c=slider(-9, 9, step=0.1, initial = -1),
+d=slider(-9, 9, step=0.1, initial = -1),
+e=slider(-9, 9, step=0.1, initial = -1))
+
+DBF<- (10^(-0.3) * (MA) + 
+         10^(-1) * (PSS) +
+         10^(-1.2) * (BE) +
+         10^(-2.4) * (BL) +
+         -10^(-0.4) *(CC) -6)
+a=-0.3,b=-1,c=-1.2,d=-2.4,e=-0.4
+```
+
+## Analytics
+
+Exploratory Analysis ( TO make sense of this data table and predict which 
+variable should be considered in prediction of the outcome)
+I used the correlogram package to generate a correlation matrix of the different vraiables. It is very useful to highlight the most correlated variables in a data table. In this plot, correlation coefficients is colored according to the value. Correlation matrix can be also reordered according to the degree of association between variables. 
+The R corrplot package is used here.
+
+```{r, eval=FALSE}
+library("corrplot")
+
+M<-cor(Population_dataset)
+head(round(M,2))
+corrplot(M, method="circle")
+
+
+## the corrplot package narRows down the Independant varaiable to Duration of Breast Feeding(DBF)
+## We first try to fit linear modelling on this data:
+
+fit_line <- lm(WAISscore ~ DBF , data=Population_dataset)
+summary(fit_line)
+
+fit_quad <- lm(WAISscore ~ DBF + I(DBF^2), data=Population_dataset)
+summary(fit_quad)
+
+#R-squared goes from essentially 0 to close to 
+#1 (it would be a perfect fit if we had not added any noise).
+```
+
+
