@@ -1,0 +1,253 @@
+---
+title: "DATA SIMULATION PROJECT FOR HS-616"
+author: "Vaishali Chaudhuri"
+date: "May 23, 2015"
+output: pdf_document
+---
+
+## Title : A simulated study that shows the association of Intelligence Quotience and Maternal and Infant Factors
+
+##### Reference Links :http://jama.jamanetwork.com/article.aspx?articleid=194901
+
+### Study design , Setting and Participants described in paper
+This population study is a prospective longitudinal sub-sample  derived from the main  Copenhagen Perinatal Cohort comprising of  9125 individuals born at the Copenhagen University Hospital between October 1959 and December 1961.This sub -cohort consists of  a sample of 973 men and women   When the cohort was established, demographic, socioeconomic, prenatal, and postnatal medical data were recorded prospectively during pregnancy, at delivery, and at a 1-year examination. Information on duration of breastfeeding was collected by a physician who interviewed the mothers at the 1-year examination.   
+                 
+#### Introduction:
+
+This is an Data Simulation Project that references the  above link and builds the story based on the paper. 
+Breastfeeding has clear short-term benefits for child survival through reduction of morbidity and mortality from infectious diseases.The paper concludes that certain other parameters (parental and infant) determine Intelligence during adult stage of life  determined by WAIS scores
+Analytics on this simulated dataset is aimed to first generate the data set and then find the answer which mystery parameter has long term benefits on IQ and what's the relation between IQ and the mystery parameter. 
+
+#### Participant's data
+* Sex : 976 singletons (490 males and 486 females)
+* Age : Mean assessment age of 27.2 years (SD = 4.4; range, 20-34 years)
+
+#### Main Outcome Measure
+Intelligence was assessed using the Wechsler Adult Intelligence Scale (WAIS) at a mean age of 27.2 years in the mixed-sex sample
+
+#### Factors that affect the outcome
+There is a main factor (not revealed but left for the analyst to come up with) on which the out come depended however thirteen potential confounders were included as covariates: It is upto the analyst to predict which is the primary variable on which the WAISscore is dependant .
+
+```{r}
+generateTable <- function(N){ 
+  
+  ## Statistical Data  for the Parents ##
+  
+  MA <- runif(N, min=(29.3-6.6), max=(29.3+6.6))   # Maternal Age at time of pregnancy
+  MA[1] <- 45
+  PSS <-runif(N, min=(4.6-1.9), max=(4.6+1.9)) # Social_Status
+  BE <- runif(N, min=(2.6-0.8), max=(2.6+0.8)) # Breadwinners_Education
+  MH <- runif(N, min=(163.3-5.4), max=(163.3+5.4)) # Mother's Height (cm)
+  MW <- runif(N, min=(4.2-2.5), max=(4.2+2.5)) # Mother's weight gain during pregnancy (kg)
+  SM <- sample(c("SMOKER", "NON_SMOKER"), N, replace=TRUE, prob=c(.4, .6))#smokers & nonsmokers
+  CC <- ifelse(SM=="SMOKER", runif(N *(0.4),min=(3.7-1.2), max=(3.7+1.2)),0)
+  NP <- runif(N, min=(2.0-1.2), max=(2.0+1.2)) # No. of pregnancies
+  PC <- runif(N, min=(70.6-37.6), max=(70.6+37.6)) # Pregnancy Complications
+  DC <- runif(N, min=(71.6-40.5), max=(71.6+40.5)) # Delivery Complications
+  
+  ##### Infant Characteristics
+  #Intelligence scores were also affected by 3 factors defined as infant characteristics   at the    time of birth
+  GA <-runif(N, min=(39.2-2.0), max=(39.2+2.0)) # Estimated gestational age(GA) (wk)
+  BW <-runif(N, min=(3251-562), max=(3251+562)) # Birth weight(BW) (g)
+  BL <-runif(N, min=(51.1-2.6), max=(51.1+2.6)) # Birth height(BL) (cm)
+  
+  DBF<- DBF <- ( 
+               10^(-0.3) * (MA) + 
+               10^(-1) * (PSS) +
+               10^(-1.2) * (BE) +
+              -10^(-0.4) * (CC) -6)
+  # Finally the output is in the form of IQ score of the participants which is WAIS score of the participants
+
+  WAISscore <- 20*DBF - DBF^2 + rnorm(N, sd=2) 
+ 
+  #Generating data frame based on parental and  infant characteristics
+  dataframe1<- data.frame(MA,PSS,BE,MH,MW,CC,NP,PC,DC,GA,BW,BL,DBF,WAISscore)
+
+  }
+  
+  P_dataset<-generateTable(10e3)
+
+  head(P_dataset)
+
+```
+
+```{r}
+
+# Adding a few outliers to the simulated data as is the case in actual world 
+  
+  P_dataset$MA[1] <- 43
+  P_dataset$PSS[1] <- 2.0
+  P_dataset$BE[1] <- 3.2
+  P_dataset$BL[1] <- 52
+  P_dataset$DBF[1] <- (
+               10^(-0.3) * (P_dataset$MA[1]) + 
+               10^(-1) * (P_dataset$PSS[1]) +
+               10^(-1.2) * (P_dataset$BE[1]) +
+              -10^(-0.4) * (P_dataset$CC[1]) -6)
+   P_dataset$WAISscore[1] <- 20*(P_dataset$DBF[1]) - (P_dataset$DBF[1])^2 
+  
+  
+  P_dataset$MA[6] <- 47
+  P_dataset$PSS[6] <- 2.0
+  P_dataset$BE[6] <- 3.2
+  P_dataset$BL[6] <- 52
+  P_dataset$DBF[6] <- (
+               10^(-0.3) * (P_dataset$MA[6]) + 
+               10^(-1) * (P_dataset$PSS[6]) +
+               10^(-1.2) * (P_dataset$BE[6]) +
+              -10^(-0.4) * (P_dataset$CC[6]) -6)
+   P_dataset$WAISscore[1] <- 20*(P_dataset$DBF[6]) - (P_dataset$DBF[6])^2 
+ head(P_dataset)
+
+```
+
+Duration of breastfeeding was positively associated with mother's age, social status, education, birth weight and negatively associated with  cigarette consumption. So we form an equation giving weightage to these parameters according to their association
+To choose the correct coefficient values to the different parameters responsible for the "Duration of Breast feeding"  equation . The manipulate function is used to set the parameters
+
+```{r, eval=FALSE}
+logistic <- function(t) 1 / (1 + exp(-t))
+library(manipulate)
+manipulate({
+  DBF <- with (P_dataset ,  
+               10^a * (MA) + 
+               10^b * (PSS) +
+               10^c * (BE) +
+              -10^e * (CC) -6)
+              hist(DBF, breaks=50)
+}, 
+a=slider(-9, 9, step=0.1, initial = -1), 
+b=slider(-9, 9, step=0.1, initial = -1), 
+c=slider(-9, 9, step=0.1, initial = -1),
+d=slider(-9, 9, step=0.1, initial = -1),
+e=slider(-9, 9, step=0.1, initial = -1))
+
+#a=-0.3,b=-1,c=-1.2,e=-0.4
+```
+
+The next steps is to change the abbreviated column names to more descriptive names and  create a simulated Data Table which describes the IQ level of an adult at 27.2 years of age that might could have been influenced by a bunch of factors in infancy or by the characteristics determined by the parents . Our job is to back run analytics and find out which one .
+
+
+```{r}
+
+colnames(P_dataset) <- c("MaternaL_Age","Social_Status","Parent_Educn","Mothers_ht","Mothers_wt_gain","Cig_cons","No._of_pregn","Preg_compl","Delivery_compl","Gestational_age","Birth_wt","Birth_len","Durn_Breast_feed","IQ_level")
+IQ_cohort <-P_dataset
+names(IQ_cohort) <- tolower(names(IQ_cohort))
+head(IQ_cohort)
+write.csv(IQ_cohort,file="/Users/vchaudhuri/Desktop/HS-616/IQ_data.csv")
+```
+
+## Analytics
+
+Exploratory Analysis ( To make sense of this data table and predict which 
+variable should be considered in prediction of the outcome)
+I used the correlogram package to generate a correlation matrix of the different vraiables. It is very useful to highlight the most correlated variables in a data table. In this plot, correlation coefficients is colored according to the value. Correlation matrix can be also reordered according to the degree of association between variables. 
+The R corrplot package is used here.
+
+```{r}
+
+library("corrplot")
+M<-cor(IQ_cohort)
+round(M,2)
+corrplot(M, method="circle")
+
+
+## the corrplot package narRows down the Independant varaiable to Duration of Breast Feeding(DBF). However before narrowing down the most correlated variable to duration of breast feeding. I wanted to analyse the shape of the graphs by plotting iq_level as a function of all other parameters
+```
+## Analyzed each parameter vs iq_level as that gives some idea on which parameter is involved
+
+```{r,eval=FALSE}
+
+library("ggplot2")
+ggplot(IQ_cohort)+geom_point(aes(x=maternal_age,y=iq_level,color='red'))
+ggplot(IQ_cohort)+geom_point(aes(x=social_status,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=parent_educn,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=mothers_ht,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=mothers_wt_gain,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=cig_cons,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=no._of_pregn,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=preg_compl,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=delivery_compl,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=gestational_age,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=birth_wt,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=birth_len,y=iq_level))
+ggplot(IQ_cohort)+geom_point(aes(x=durn_breast_feed,y=iq_level))
+
+```
+
+The two variables that seem to affect IQ level seems to be maternal age and Durtaion of breast feeding. So all three are plotted into a 3D scatter plot
+
+
+```{r}
+library("scatterplot3d")
+
+IQ3d <-scatterplot3d( IQ_cohort$durn_breast_feed,IQ_cohort$maternal_age,IQ_cohort$iq_level, 
+                    color = "blue",
+              xlab= "duration_of_breastfeed",ylab= "maternal_age",zlab= "IQ_level", 
+              main="Duration_breast_feed VS maternal_age VS IQ_level")
+
+```
+
+## Checking which parameter and which function gives the best fit
+
+```{r}
+
+#Fitting IQ_level as a function of Duration of Breast feeding in a linear model with a small sample size taking the first 30 samples of IQ_cohort
+
+Population_dataset<-IQ_cohort[1:30,]
+with (Population_dataset, plot(durn_breast_feed, iq_level))
+fit1 <- lm(iq_level ~ durn_breast_feed, Population_dataset)
+abline(fit1, col="red")
+summary(fit1)
+
+#Fitting IQ_level as a function of Maternal Age in a linear model with a small sample size
+
+Population_dataset<-IQ_cohort[1:30,]
+with (Population_dataset, plot(maternal_age, iq_level))
+fit2 <- lm(iq_level ~ maternal_age, Population_dataset)
+abline(fit2, col="blue")
+summary(fit2)
+
+#Fitting IQ_level as a function of Duration of Breast feeding in a linear model with a the entire sample size IQ_cohort
+
+Population_dataset<-IQ_cohort
+with (Population_dataset, plot(durn_breast_feed, iq_level))
+fit3 <- lm(iq_level ~ durn_breast_feed, Population_dataset)
+abline(fit3, col="green")
+summary(fit3)
+
+#Fitting IQ_level as a function of Maternal_Age in a linear model with a the entire sample size IQ_cohort
+
+Population_dataset<-IQ_cohort
+with (Population_dataset, plot(maternal_age, iq_level))
+fit4 <- lm(iq_level ~ maternal_age, Population_dataset)
+abline(fit4, col="pink")
+summary(fit4)
+
+#Fitting IQ_level as a function of duration of Breast feeding in a Quadratic model with a small sample size
+
+Population_dataset<-IQ_cohort[1:30,]
+with (Population_dataset, plot(durn_breast_feed, iq_level))
+fit1_quad <- lm(iq_level ~ durn_breast_feed + I((durn_breast_feed)^2), data=Population_dataset)
+summary(fit1_quad)
+
+#Fitting IQ_level as a function of duration of Breast feeding in a Quadratic model with a large sample size
+
+Population_dataset<-IQ_cohort
+with (IQ_cohort, plot(durn_breast_feed, iq_level))
+fit1_quad <- lm(iq_level ~ durn_breast_feed + I((durn_breast_feed)^2), data=Population_dataset)
+summary(fit1_quad)
+
+#Fitting IQ_level as a function of maternal_age in a Quadratic model with a large sample size
+
+Population_dataset<-IQ_cohort
+with (IQ_cohort, plot(maternal_age, iq_level))
+fit2_quad <- lm(iq_level ~ maternal_age + I((maternal_age)^2), data=Population_dataset)
+summary(fit1)
+
+
+```
+
+## CONCLUSION
+
+R-squared goes from essentially 0 to close to 1 when Iqlevel is a quadratic function of Duration of Breast Feeding
+
