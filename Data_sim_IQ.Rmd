@@ -140,39 +140,27 @@ write.csv(IQ_cohort,file="/Users/vchaudhuri/Desktop/HS-616/IQ_data.csv")
 
 Exploratory Analysis ( To make sense of this data table and predict which 
 variable should be considered in prediction of the outcome)
-I used the correlogram package to generate a correlation matrix of the different vraiables. It is very useful to highlight the most correlated variables in a data table. In this plot, correlation coefficients is colored according to the value. Correlation matrix can be also reordered according to the degree of association between variables. 
-The R corrplot package is used here.
+I used the correlogram package to generate a correlation matrix of the different vraiables. It is very useful to highlight the most correlated variables in a data table. In this plot, correlation coefficients is colored according to the value. Correlation matrix can be also reordered according to the degree of association between variables. The R corrplot package is used here.
 
 ```{r}
 
 library("corrplot")
 M<-cor(IQ_cohort)
-round(M,2)
+head(round(M,2))
 corrplot(M, method="circle")
 
-
-## the corrplot package narRows down the Independant varaiable to Duration of Breast Feeding(DBF). However before narrowing down the most correlated variable to duration of breast feeding. I wanted to analyse the shape of the graphs by plotting iq_level as a function of all other parameters
-```
-## Analyzed each parameter vs iq_level as that gives some idea on which parameter is involved
-
-```{r,eval=FALSE}
-
-library("ggplot2")
-ggplot(IQ_cohort)+geom_point(aes(x=maternal_age,y=iq_level,color='red'))
-ggplot(IQ_cohort)+geom_point(aes(x=social_status,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=parent_educn,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=mothers_ht,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=mothers_wt_gain,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=cig_cons,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=no._of_pregn,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=preg_compl,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=delivery_compl,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=gestational_age,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=birth_wt,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=birth_len,y=iq_level))
-ggplot(IQ_cohort)+geom_point(aes(x=durn_breast_feed,y=iq_level))
+## the corrplot package narrows down the independant varaiable to Duration of Breast Feeding(DBF). However before narrowing down the most correlated variable to duration of breast feeding. I wanted to analyse the shape of the graphs by plotting iq_level as a function of all other parameters
 
 ```
+
+A scatterplot matrix compares each variable in a dataset against each of the other variables using scatter plots. To understand the relationship between each variable and the outcome this graph was plotted.
+
+
+```{r}
+Population_dataset<-IQ_cohort[1:300,]
+plot(Population_dataset[c("maternal_age", "social_status", "parent_educn", "cig_cons", "durn_breast_feed", "iq_level")])
+```
+
 
 The two variables that seem to affect IQ level seems to be maternal age and Durtaion of breast feeding. So all three are plotted into a 3D scatter plot
 
